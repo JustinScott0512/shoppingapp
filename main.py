@@ -1,3 +1,4 @@
+import random
 import threading
 import time
 from tkinter import *
@@ -120,11 +121,14 @@ def checkout():
         for i in itemsFrame.winfo_children():
             i.grid_forget()
 
+        minutes = random.randint(5, 30)
+
         Label(itemsFrame, text='Thank you for your order!', font=titleFont, bg=backgroundColor).grid(row=0, column=1,
                                                                                                      padx=30, pady=50)
-        Button(itemsFrame, text='Finish', bg=backgroundColor, font=buttonFont, command=cancel).grid(row=1, column=1,
+        Label(itemsFrame, text=f'Your order will be ready in about {minutes} minutes!', font=titleFont, bg=backgroundColor).grid(row=1, column=1,
+                                                                                                     padx=30, pady=50)
+        Button(itemsFrame, text='Finish', bg=backgroundColor, font=buttonFont, command=cancel).grid(row=2, column=1,
                                                                                                     padx=30, pady=50)
-        itemsFrame.pack()
 
     def cancel():
         for i in itemsFrame.winfo_children():
